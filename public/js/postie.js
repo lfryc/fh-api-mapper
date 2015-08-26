@@ -157,9 +157,10 @@ Handlebars.registerHelper('controlGroup', function(label, helpText, options) {
   }
 
   function getHeaders() {
-    var baseHeaders = {
-      'content-type': $contentType.val()
-    };
+    var baseHeaders = {};
+    if ($contentType.val()) {
+      baseHeaders['content-type'] = $contentType.val();
+    }
     var parsedHeaders = parseHeaders( $headersRaw.val() );
     var headers = $.extend( baseHeaders, parsedHeaders );
     return headers;
